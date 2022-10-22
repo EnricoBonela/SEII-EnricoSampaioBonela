@@ -1,0 +1,33 @@
+2 
+A)
+	Os quatros processos de compilação são:
+	1. Pré-processamento
+	2. Compilação
+	3. Montagem
+	4. Lincagem
+	No pré-processamento, o compilador trabalha com diretivas introduzidas no código que são precedidas pelo
+caractere #, tal como instruções #include e #define, também incluindo comentários.
+	Durante a etapa decompilação, o compilador traduz o código fonte (neste caso, C/C++), gerado na etapa de
+pré-processamentopara a linguagem Assembly.
+	A etapa de montagem gera um arquivo binário em código de máquina que ao serprocessado, estará pronto para ser
+interpretado pelo processador.
+	A etapa de lincagem, trabalha na mesclagem (link) dos arquivos objeto (ou binários) gerados na etapa de
+montagem, gerando o arquivo executável que pode ser utilizado pelos usuários.
+
+B)
+O parâmetro -static vincula um programa estaticamente, desfazendo a necessidade de
+que haja a existência de uma dependência de bibliotecas dinâmicas em tempo de execução
+para que o programa seja executado
+
+O parâmetro “-g” gera informações de debug a serem utilizadas no GDB seguindo:
+-g0 Sem informações de Debug
+-g1 Informações de Debug minimas
+-g3 Informações de Debug máximas
+-g  Informações padrão de Debug
+
+O pedantic habilita alguns avisos que existem como padrão no C mas são desativados
+para extensões do GCC
+
+O parâmetro “-Wall” habilita mensagens de warning do compilador.
+
+O parâmetro -o3 realiza otimizações para melhorar o desempenho da execução do código
