@@ -1,11 +1,11 @@
 # Arithmetic Operators:
-# Addition:       3 + 2
-# Subtraction:    3 - 2
-# Multiplication: 3 * 2
-# Division:       3 / 2
-# Floor Division: 3 // 2
-# Exponent:       3 ** 2
-# Modulus:        3 % 2
+# Addition:       3 + 4
+# Subtraction:    3 - 4
+# Multiplication: 3 * 4
+# Division:       3 / 4
+# Floor Division: 3 // 4
+# Exponent:       3 ** 4
+# Modulus:        3 % 4
 
 
 # Comparisons:
@@ -16,10 +16,10 @@
 # Greater or Equal: 3 >= 2
 # Less or Equal:    3 <= 2
 
-print(3/2)
-print(3//2)
-print(3**2)
-print(3%2)
+print(3/4)
+print(3//4)
+print(3**4)
+print(3%4)
 
 print(abs(-3))
 print(round(3.25,0))
