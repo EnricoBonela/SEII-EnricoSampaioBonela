@@ -1,4 +1,4 @@
-courses = ['History', 'Math', 'Physics', 'CompSci']
+courses = ['History', 'Math', 'Physica', 'CompSci']
 courses_2 = ['Chemistry' , 'Education']
 courses.append('Art')
 courses.insert(0, courses_2)
