@@ -1,6 +1,6 @@
 # Key and Values / Hashmaps
 
-student = {'name': 'Jadson', 'Age': 23, 'curso': ['mecatronica', 'aeronautica']}
+student = {'name': 'Enrico', 'Age': 24, 'curso': ['mecatronica', 'direito']}
           # Key  :  Value
 print(student['name'])
 
