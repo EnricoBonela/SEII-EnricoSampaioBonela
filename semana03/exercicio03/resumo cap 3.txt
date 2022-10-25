@@ -1,0 +1,91 @@
+	1 - olhando processos
+	
+	Proceso é a instância de um programa em execução. Todo programa em execução utiliza
+um ou mais processos. Para um sistema Linux, todo processo é identificado através de um ID
+(também chamado de pid). O ID de processos são sequências de 16 bits atribuídos sequencialmente
+pelo sistema Linux quando um novo processo é criado.
+	Todo processo tem um processo pai (ppid de Parent Process ID), exceto o processo init.
+Ao trabalhar com processos em programas em C ou C++, é necessário utilizar o typedef pid_t,
+que é definido pela biblioteca <sys/types.h>. Um programa pode obter o ID do processo em
+execução utilizando a system call getpid() e também de seu processo pai utilizando o getppid().
+	Por padrão, ao executar o comando ps sem argumentos extras, são exibidos processos
+que são controlados pelo terminal no qual o comando foi invocado. Na Figura 1 a seguir, a
+primeira linha de comando retornou dois processos, o primeiro, zsh, é o shell que está sendo
+executado neste terminal. O segundo, é a instância do processo ps. O segundo comando
+executado, apresenta informações mais detalhadas, através dos seguintes argumentos:
+	-e: apresenta todos os processos em execução no sistema;
+	-o pid,ppid, command: informa ao comando ps quais informações são exibidas ao
+	apresentar cada processo.
+
+
+
+	1.1 - Finalizando os processos
+
+	Por diversas razões pode ser interessante “matar” (kill), interrompendo ou deletando um
+processo. Para isso, pode-se utilizar o comando kill, especificando o número do ID deste
+processo. O comando kill funciona enviando para o progresso um sinal SIGTERM, ocasionando
+o fim deste processo, a menos que o programa em questão tenha uma ferramenta para tratar
+este sinal SIGTERM.
+
+
+
+	1.2 Criando processos
+
+	Existem duas técnicas mais comuns que são utilizadas para criar um novo processo.
+
+SYSTEM
+	A função system, presente na biblioteca padrão em C, proporciona maneiras simples de
+executar um comando dentro de um programa, como se estivesse sendo executado direto de
+um shell. A função system, cria um subprocesso no shell padrão e executa o comando
+desejado.
+	A função system, retorna o status de saída no shell. Se o shell não puder ser executado,
+ele retorna o valor 127, caso algum outro erro ocorra, retorna o valor -1. Como system utiliza
+o shell para executar os comandos, está sujeita a features, limitações e falhas de segurança da
+shell padrão do sistema.
+
+FORK AND EXEC
+	O ambiente linux, provê a função fork para trabalhar com processos filho, que é uma
+cópia exata do processo pai. A função exec, provê um funcionamento diferente, fazendo que
+um processo em particular deixe de ser instância de um programa para se tornar a instância de
+outro programa.
+
+CALL FORK
+	Quando um programa utiliza a chamada fork, é criado um processo duplicado, chamado
+de child process (ou, processo filho). Onde, o processo pai continua com sua execução normal,
+de acordo com o programa, a partir do ponto em que a função fork foi chamada. A função filho
+também continua a execução do programa a partir do mesmo ponto. A diferenciação ocorre
+com o ID, já que o processo filho é um novo processo e possui ID diferente.
+	Uma observação importante, é que, ao utilizar a chamada fork, um parâmetro (processo) é
+fornecido e dois parâmetros são retornados. O parâmetro de retorno no processo pai é o ID do
+processo filho, e o valor de retorno do processo filho é zero, já que não existe outro processo
+criado a partir dele e também não existem processos com ID igual a zero.
+
+
+
+
+	1.3 Process Scheduling
+	O Linux trata o agendamento dos processos pai e filho de forma independente, portanto,
+não há certeza ao informar qual será executado primeiro ou quanto tempo eles serão executados
+antes que o Linux os interrompa e escalone outros processos para a execução.
+	Uma forma de garantir uma ordem de execução é especificar qual processo é menos importante,
+garantindo uma baixa prioridade no escalonador de processos. Por padrão, todo processo tem uma
+prioridade de zero. 
+
+
+
+
+	1.4 Finalização de Processos
+	Normalmente, um processo pode ser encerrado de duas maneiras. Através da execução de
+program calls, como a função exit, ou através do retorno da função principal.
+	Cada processo tem uma saída de código, que é o número que o processo retorna para seu
+processo pai. O código de saída, é o argumento passado na saída da função, ou o valor retornado
+na função principal.
+	Um processo também pode ser encerrado inesperadamente, como os sinais SIGBUS, SIGSEGV
+e SIGFPE ou como o comando Ctrl+C que encerra o terminal. Os comandos mencionados podem ser
+utilizados para finalizar o processo.
+	Os códigos de saída, ou de retorno, seguem convenções. Uma saída de código igual a
+zero, indica que o programa foi executado corretamente e nenhum erro foi encontrado,
+enquanto um código de saída diferente de zero indica que houve algum erro.
+
+
+
